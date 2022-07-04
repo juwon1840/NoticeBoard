@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+          background-color: beige;
+          text-align: center;
+        }
+        input{
+          text-align: right;
+        }
+        input:focus{
+          outline:none;
+        }
+      </style>
+      <script>
+        var showresult;
+        var num=1;
+  
+        function send(data) {
+          output.value = output.value + data;
+        }
+  
+        function outputclear(){
+          output.value="";
+        }
+  
+        function allclear(){
+          input.value="";
+          output.value="";
+        }
+  
+        function square(){
+          showresult = Math.pow(output.value,2);
+          output.value=showresult;
+        }
+  
+        function swap(){
+          output.value=-output.value;
+        }
+  
+        function tdelete(){
+          output.value = output.value.substring(0, output.value.length-1);
+        }
+  
+        function sqrt() {
+          output.value = Math.sqrt(output.value);
+        }
+  
+        function sign(data){
+          input.value = input.value+output.value + data;
+          output.value="";
+        }
+  
+        function point(){
+          output.value="1/"+output.value;
+          output.value=eval(output.value);
+        }
+  
+  
+        function result(){
+          input.value=input.value+output.value;
+          showresult = eval(input.value);
+          list.value+=num+"번째 계산식"+input.value+"\n";
+          input.value="";
+          output.value=showresult;
+          list.value+=num+"번째 결과"+showresult+"\n";
+          num++;
+        }
+      </script>
+    </head>
+    <body>
+      <table border="1">
+        <tr>
+          <td class="aa" colspan="4"><input type="text" id="input" readonly></td>
+        </tr>
+        <tr>
+          <td colspan="4"><input type="text" id="output" readonly></td>
+        </tr>
+        <tr>
+          <td onclick="swap()">+-</td>
+          <td onclick="sqrt()">루트</td>
+          <td onclick="square()">제곱</td>
+          <td onclick="point()">1/X</td>
+        </tr>
+        <tr>
+          <td onclick="outputclear()">CE</td>
+          <td onclick="allclear()">C</td>
+          <td onclick="tdelete()"><</td>
+          <td onclick="sign('/')">÷</td>
+        </tr>
+        <tr>
+          <td onclick="send(7)">7</td>
+          <td onclick="send(8)">8</td>
+          <td onclick="send(9)">9</td>
+          <td onclick="sign('*')">X</td>
+        </tr>
+        <tr>
+          <td onclick="send(4)">4</td>
+          <td onclick="send(5)">5</td>
+          <td onclick="send(6)">6</td>
+          <td onclick="sign('-')">-</td>
+        </tr>
+        <tr>
+          <td onclick="send(1)">1</td>
+          <td onclick="send(2)">2</td>
+          <td onclick="send(3)">3</td>
+          <td onclick="sign('+')">+</td>
+        </tr>
+        <tr>
+          <td> </td>
+          <td onclick="send(0)">0</td>
+          <td onclick="send('.')">.</td>
+          <td onclick="result()">=</td>
+        </tr>
+        <tr>
+          <td colspan="4"><textarea id="list" rows="40" cols="22"></textarea></td>
+        </tr>
+      </table>
+    </body>
+  </html>
