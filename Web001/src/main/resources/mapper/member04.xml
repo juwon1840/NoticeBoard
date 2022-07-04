@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.human.dao.IF_Member04DAO">
+	<insert id="insert" parameterType="com.human.vo.Member04VO">  <!--  쿼리문은 파라미터 필요, 리턴값을 필요 없다. -->
+		insert into member04 values (#{id},#{pass},#{name},#{tel},sysdate)
+	</insert>
+	<select id="selectOne" resultType="com.human.vo.Member04VO">
+		select * from member04 where id=#{username} and pass=#{pwd}
+	</select>
+</mapper>

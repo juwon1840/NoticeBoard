@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.human.dao.IF_BBS04DAO">
+	<update id="update" parameterType="com.human.vo.BBSVO">
+		update bbs04 set pass=#{pass}, title=#{title}, memo=#{memo}, scheck=#{scheck} where no=#{no}
+	</update>
+	<update id="updatecnt" parameterType="String">
+		update bbs04 set cnt=cnt+1
+		where no=#{no}
+	</update>
+	<select id="selectAll" resultType="com.human.vo.BBSVO">  <!-- 쿼리문은 파라미터 필요, 리턴값을 필요 없다. -->
+		select * from bbs04 order by indate desc
+	</select>
+	<select id="view" resultType="com.human.vo.BBSVO"
+		parameterType="String">  <!-- 쿼리문은 파라미터 필요, 리턴값을 필요 없다. -->
+		select * from bbs04 where no=#{no}
+	</select>
+	<insert id="insert" parameterType="com.human.vo.BBSVO">  <!-- 쿼리문은 파라미터 필요, 리턴값을 필요 없다. -->
+		insert into bbs04 values
+		(bbs04_seq.nextval,#{bbs_user},#{pass},#{title},#{memo},#{scheck},sysdate,default)
+	</insert>
+	<delete id="delete" parameterType="String">
+		delete from bbs04 where
+		no=#{no}
+	</delete>
+</mapper>
